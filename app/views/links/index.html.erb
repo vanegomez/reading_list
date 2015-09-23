@@ -1,1 +1,12 @@
 <h1><%= current_user.name.capitalize %>'s Reading List</h1>
+
+<h3>Add a new Link to Your List</h3>
+<%= render partial: 'link_form' %>
+
+<h3>Reading List:</h3>
+
+<% current_user.links.each do |link| %>
+  <ul>
+    <li><%= link_to link.url, link.url %></li>
+  </ul>
+<% end %>
