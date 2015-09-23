@@ -21,6 +21,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'simplecov'
   gem 'pry-rails'
   gem 'byebug'
   # Access an IRB console on exception pages or by using <%= console %> in views

@@ -3,10 +3,19 @@
 <h3>Add a new Link to Your List</h3>
 <%= render partial: 'link_form' %>
 
-<h3>Reading List:</h3>
+<h3>Unread Links:</h3>
 
-<% current_user.links.each do |link| %>
+<% @links.unread.each do |link| %>
   <ul>
-    <li><%= link_to link.url, link.url %></li>
+    <li><%= link_to link.url, link.url %> | status: <%= link.status %></li>
+    <li><%= link_to "Mark Read", user_link_path(@user, user_id: @user.id, link_id: link.id, status: 'read'), method: :put %></li>
+  </ul>
+<% end %>
+
+<h3>Read Links:</h3>
+<% @links.read.each do |link| %>
+  <ul>
+    <li><%= link_to link.url, link.url %> | status: <%= link.status %></li>
+    <li><%= link_to "Mark Unread", user_link_path(@user,user_id: @user.id, link_id: link.id, status: 'unread'), method: :put %></li>
   </ul>
 <% end %>

@@ -5,10 +5,6 @@ class LinksController < ApplicationController
     @link   = Link.new
   end
 
-  def new
-    @link = Link.new
-  end
-
   def create
     @link = current_user.links.new(link_params)
 
@@ -19,9 +15,19 @@ class LinksController < ApplicationController
     end
   end
 
+  def update
+    @link = set_link
+    @link.update_attributes(status: params[:status])
+    redirect_to user_links_path(current_user)
+  end
+
   private
 
   def link_params
     params.require(:link).permit(:url)
+  end
+
+  def set_link
+    Link.find_by(id: params[:link_id])
   end
 end
