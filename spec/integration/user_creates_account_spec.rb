@@ -3,10 +3,11 @@ require "rails_helper"
 RSpec.feature "user" do
   it "creates an account" do
     visit new_user_path
-    fill_in "Username", with: "rachel" #using label "Username"
-    fill_in "Password", with: "password"
-    click_button "Create Account"
+    fill_in "Name", with: "Vane"
+    fill_in "Password", with: "pass"
+    fill_in "Password confirmation", with: "pass"
+    click_button "Create User"
 
-    assert page.has_content?("Welcome, rachel")
+    assert page.has_content?("Vane")
   end
 end
