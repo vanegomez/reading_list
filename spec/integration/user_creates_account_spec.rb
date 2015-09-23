@@ -10,4 +10,13 @@ RSpec.feature "user" do
 
     assert page.has_content?("Vane")
   end
+
+  it "can't create an account without a name" do
+    visit new_user_path
+    fill_in "Password", with: "pass"
+    fill_in "Password confirmation", with: "pass"
+    click_button "Create User"
+
+    assert page.has_content?("Name can't be blank")
+  end
 end

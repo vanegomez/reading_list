@@ -14,6 +14,13 @@
  *= require_self
  */
 
+@import "materialize/components/color";
+@import "materialize";
+
+ul {
+  list-style-type: none;
+}
+
 #nav li {
   display: inline;
 }
